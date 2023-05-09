@@ -1,0 +1,45 @@
+Package: scImmuCC
+Type: Package
+Title: Hierarchical annotation for immune cell types in scRNA-Seq data
+Version: 1.0.0
+Author: c(person("Ying", "Jiang",
+                    email = "jiangy_lavender@163.com",
+                    role = c("aut", "cre", "cph")),
+             person("Aiping", "Wu",
+                    email = "wap@ism.cams.cn",
+                    role = c("ths")))
+Maintainer: YingJiang<jiangy_lavender@163.com>                    
+Description: Annotating immune cells based on markers is one of the commonly used methods for single cell RNA-Seq data annotation. This package aims to annotate immune cells in scRNA-Seq data using a hierarchical strategy based on the ssGSEA algorithm to calculate enrichment scores. The enrichment score of each type of cell is annotated separately by hierarchical calculation, thereby reducing the interference of gene expression profiles between similar subtypes, and achieving more accurate annotation of immune cell subtypes. The input file is an expression matrix with barcodes as column names and gene names as row namess. The optional parameter is Non_Immune, which is whether the user data contains non-immune cells. The default value is TRUE.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Data:
+    test_data,
+    layer0_genelist,
+    layer1_genelist,
+    Tcell_genelist,
+    Bcell_genelist,
+    DC_genelist,
+    NK_genelist,
+    Monocyte_genelist,
+    Macrophage_genelist,
+    ILC_genelist,
+    CD4_genelist,
+    CD8_genelist
+Depends: 
+    R (>= 4.1.1),
+    Seurat,
+    GSVA
+Imports:
+    GSVA,
+    Seurat,
+    ggplot2,
+    dplyr,
+    Matrix
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+RoxygenNote: 7.2.3
+VignetteBuilder: knitr
