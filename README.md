@@ -2,7 +2,7 @@
 Hierarchical annotation of immune cells in scRNA-Seq data based on ssGSEA algorithm.
 
 The below demonstrates the result of Hierarchical annotation for some immune cells in the E-MTAB-11536 dataset (included in the package)
-<table style="backgroud-color: #F8CECC;">
+<table style="backgroud-color: #CCCCCC;">
   <tr>
 library(scImmuCC)
 
