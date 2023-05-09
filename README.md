@@ -24,5 +24,23 @@ if (!requireNamespace("remotes", quietly = TRUE))
 remotes::install_github("wuaipinglab/scImmuCC")
 
 # QuickStart
-The following is a quick tutorial on how to use scImmuCC to annotate immune cell types in scRNA-Seq
+The following is a quick tutorial on how to use scImmuCC to annotate immune cell types in scRNA-Seq.
+
+library(scImmuCC)
+
+count <- read.csv(file=filename) #read your scRNA-Seq file
+dim(count)
+count <- as.matrix(count)
+test <- scImmuCC_Layered(test_data,Non_Immune=FALSE) ## if your data have non-immune cell, Nn_Immune = TRUE
+
+The annotation results will be output in your current running directory。
+
+
+
+
+
+
+
+
+
 
