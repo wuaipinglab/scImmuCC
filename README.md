@@ -14,13 +14,20 @@ The below demonstrates the result of Hierarchical annotation for some immune cel
 </div>
 
 # Installation
-R programming language >= 4.1.1 is required to use scImmuCC.
+R programming language >= 4.1.1 ，packages Seurat and GSVA are required to use scImmuCC.
 
 The installation from GitHub is in experimental stage but gives the newest feature:
 <div style="backgroud-color: #f5f5f5; padding: 10px">
+    
+    if (!requireNamespace("Seurat", quietly = TRUE))
+        install.packages("Seurat")
+    
+    if (!requireNamespace("GSVA", quietly = TRUE))
+        BiocManager::install("GSVA")
 
     if (!requireNamespace("remotes", quietly = TRUE))
         install.packages("remotes")
+    
     remotes::install_github("wuaipinglab/scImmuCC")
 </div>
 
@@ -34,8 +41,7 @@ The following is a quick tutorial on how to use scImmuCC to annotate immune cell
              
     count <- as.matrix(count)
     
-    test <- scImmuCC_Layered(test_data,Non_Immune=FALSE) 
-    ##if your data have non-immune cell, Nn_Immune = TRUE
+    test <- scImmuCC_Layered(test_data,Non_Immune=FALSE)    ##if your data have non-immune cell, Nn_Immune = TRUE
             
 </div>
 The annotation results will be output in your current running directory。
