@@ -4,12 +4,12 @@ The below demonstrates the result of Hierarchical annotation for some immune cel
 <div style="backgroud-color: #f5f5f5; padding: 10px">
 library(scImmuCC)
 
-data(package="scImmuCC)
-data(test_data,package="scImmuCC") # load the test data
+    data(package="scImmuCC)
+    data(test_data,package="scImmuCC") # load the test data
 
-count <- as.matrix(test_data) # Convert test data to matrix
+    count <- as.matrix(test_data) # Convert test data to matrix
 
-test <- scImmuCC_Layered(count = count ,Non_Immune = FALSE)
+    test <- scImmuCC_Layered(count = count ,Non_Immune = FALSE)
 
 </div>
 
@@ -29,8 +29,9 @@ The following is a quick tutorial on how to use scImmuCC to annotate immune cell
 library(scImmuCC)
 
 count <- read.csv(file=filename) #read your scRNA-Seq file
-dim(count)
+
 count <- as.matrix(count)
+
 test <- scImmuCC_Layered(test_data,Non_Immune=FALSE) #if your data have non-immune cell, Nn_Immune = TRUE
 
 The annotation results will be output in your current running directory。
