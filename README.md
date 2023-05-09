@@ -13,6 +13,16 @@ test <- scImmuCC_Layered(count = count ,Non_Immune = FALSE)
 
 </div>
 
-#In
+# Installation
+R programming language >= 4.1.1 is required to use scImmuCC.
 
+The installation from GitHub is in experimental stage but gives the newest feature:
+
+if (!requireNamespace("remotes", quietly = TRUE))
+    install.packages("remotes")
+
+remotes::install_github("wuaipinglab/scImmuCC")
+
+# QuickStart
+The following is a quick tutorial on how to use scImmuCC to annotate immune cell types in scRNA-Seq
 
