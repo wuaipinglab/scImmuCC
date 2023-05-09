@@ -23,6 +23,7 @@ The installation from GitHub is in experimental stage but gives the newest featu
 Below is an example of Hierarchical annotation for some immune cells in the E-MTAB-11536 dataset (included in the package)
 
 <div style="backgroud-color: #f5f5f5; padding: 10px">
+    
     library(scImmuCC)
 
     data(package="scImmuCC)
