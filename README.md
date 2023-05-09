@@ -17,24 +17,25 @@ library(scImmuCC)
 R programming language >= 4.1.1 is required to use scImmuCC.
 
 The installation from GitHub is in experimental stage but gives the newest feature:
+<div style="backgroud-color: #f5f5f5; padding: 10px">
 
-if (!requireNamespace("remotes", quietly = TRUE))
-    install.packages("remotes")
-
-remotes::install_github("wuaipinglab/scImmuCC")
+    if (!requireNamespace("remotes", quietly = TRUE))
+        install.packages("remotes")
+    remotes::install_github("wuaipinglab/scImmuCC")
+</div>
 
 # QuickStart
 The following is a quick tutorial on how to use scImmuCC to annotate immune cell types in scRNA-Seq.
-
-library(scImmuCC)
-
-count <- read.csv(file=filename) #read your scRNA-Seq file
-
-count <- as.matrix(count)
-
-test <- scImmuCC_Layered(test_data,Non_Immune=FALSE) #if your data have non-immune cell, Nn_Immune = TRUE
-
+<div style="backgroud-color: #f5f5f5; padding: 10px">
+    library(scImmuCC)
+    count <- read.csv(file=filename) #read your scRNA-Seq file
+             count <- as.matrix(count)
+    test <- scImmuCC_Layered(test_data,Non_Immune=FALSE) 
+            #if your data have non-immune cell, Nn_Immune = TRUE
+</div>
 The annotation results will be output in your current running directory。
+            
+            
 
 
 
