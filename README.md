@@ -47,7 +47,7 @@ The following is a quick tutorial on how to use scImmuCC to annotate immune cell
              
     count <- as.matrix(count)
     
-    test <- scImmuCC_Layered(test_data,Non_Immune=FALSE)    ##if your data have non-immune cell, NOn_Immune = TRUE
+    test <- scImmuCC_Layered(test_data,Non_Immune=FALSE)    ##if your data have non-immune cell, Non_Immune = TRUE
             
 </div>
 The annotation results will be output in your current running directory。
