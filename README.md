@@ -4,7 +4,7 @@
 # Installation
 R programming language >= 4.1.1 ，packages Seurat and GSVA are required to use scImmuCC.
 
-The installation from GitHub is in experimental stage but gives the newest feature:
+The installation from GitHub is in experimental stage but it can be used normally when the dependencies are installed:
 <div style="backgroud-color: #f5f5f5; padding: 10px">
     
     if (!requireNamespace("Seurat", quietly = TRUE))
@@ -26,7 +26,7 @@ Below is an example of Hierarchical annotation for some immune cells in the E-MT
     
     library(scImmuCC)
 
-    data(package="scImmuCC)
+    #data(package="scImmuCC)
     data(test_data,package="scImmuCC") # load the test data
 
     count <- as.matrix(test_data) # Convert test data to matrix
