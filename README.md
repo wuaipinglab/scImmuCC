@@ -45,7 +45,7 @@ The following is a quick tutorial on how to use scImmuCC to annotate immune cell
     
     count <- read.csv(file=filename)     ##read your scRNA-Seq file
              
-    count <- as.matrix(count)
+    count <- as.matrix(count)     ##  a matrix with cell unique barcodes as column names and gene names as row names
     
     test <- scImmuCC_Layered(test_data,Non_Immune=FALSE)    ##if your data have non-immune cell, Non_Immune = TRUE
             
