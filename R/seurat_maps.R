@@ -35,7 +35,7 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   if(cells>50){
     seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
   }else{
-    seurat.data <- RunPCA(seurat.data,npcs = cells-1, features = VariableFeatures(object = seurat.data))
+    seurat.data <- RunPCA(seurat.data,npcs = (cells-1), features = VariableFeatures(object = seurat.data))
   }
 
   head(seurat.data@reductions$pca@cell.embeddings)
