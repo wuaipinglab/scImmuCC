@@ -3,7 +3,7 @@
 #' @details Input takes a count, genelist and scImmuCC result, returns tsne, umap, Dotplot and pheatmaps.
 #' @param count  a matrix with cell unique barcodes as column names and gene names as row names .
 #' @param genematrix  a data frame with cell types as column names .
-#' @param ssGSEA_result  a data frame , scImmuCC return result .
+#' @param ssGSEA_result  a data frame , scImmuCC1.1 return result .
 #' @param filename  custom file name， character .
 #' @return 4 pictures.
 #' @import ggplot2
@@ -30,7 +30,14 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   seurat.data <- ScaleData(seurat.data, features = all.genes)
 
   #Perform linear dimensional reductionPerform linear dimensional reduction
-  seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
+  counts <- seura.data[["RNA"]]@counts
+  cells <- length(counts[2,])
+  if(cells>50){
+    seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
+  }else{
+    seurat.data <- RunPCA(seurat.data,npcs = cells-1, features = VariableFeatures(object = seurat.data))
+  }
+
   head(seurat.data@reductions$pca@cell.embeddings)
   head(seurat.data@reductions$pca@feature.loadings)
   seurat.data <- ProjectDim(object = seurat.data)
