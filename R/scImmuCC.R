@@ -15,10 +15,10 @@
 scImmuCC_Layered <- function(count,Non_Immune=TRUE){
 
   # if (!requireNamespace("GSVA", quietly = TRUE)) {
-    BiocManager::install("GSVA")
+  #  BiocManager::install("GSVA")
   # }
   # if (!requireNamespace("Seurat", quietly = TRUE)){
-    install.packages("Seurat")
+  #  install.packages("Seurat")
   # }
   data("./data/layer1_genelist.rda",package="scImmuCC")
   data("./data/Tcell_genelist.rda",package="scImmuCC")
