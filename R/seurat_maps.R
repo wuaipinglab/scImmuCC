@@ -31,14 +31,12 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
   #Perform linear dimensional reductionPerform linear dimensional reduction
   counts <- seurat.data[["RNA"]]@counts
-  #cells <- length(counts[2,])
-  #if(cells>50){
-  #  seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
-  #}else{
-  #  seurat.data <- RunPCA(seurat.data,npcs = (cells-1), features = VariableFeatures(object = seurat.data))
-  #}
-  seurat.data <- seurat.data[!duplicated(rownames(seurat.data)), ]
-  seurat.data <- RunPCA(seurat.data,npcs = (cells-1), features = VariableFeatures(object = seurat.data))
+  cells <- length(counts[2,])
+  if(cells>50){
+    seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
+  }else{
+    seurat.data <- RunPCA(seurat.data,npcs = (cells-1), features = VariableFeatures(object = seurat.data))
+  }
   
   head(seurat.data@reductions$pca@cell.embeddings)
   head(seurat.data@reductions$pca@feature.loadings)
@@ -48,12 +46,14 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
   seurat.data <- RunUMAP(seurat.data, dims = 1:10)
   n <- length(count[2,])
-  if(n>91){
-    seurat.data <- RunTSNE(seurat.data, dims = 1:10)
-  }
-  else{
-    seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 1)
-  }
+  seurat.data <- seurat.data[!duplicated(rownames(seurat.data)), ]
+  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+  #if(n>91){
+  #  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+  #}
+  #else{
+  #  seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 1)
+  #}
 
   head(seurat.data@reductions$tsne@cell.embeddings)
 
