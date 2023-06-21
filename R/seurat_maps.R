@@ -14,6 +14,7 @@
 
 seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
+  count <- count[, !duplicated(colnames(count))]
   seurat.data <- CreateSeuratObject(counts = count, project = filename)#, min.cells = 3, min.features = 200)
   seurat.data
   seurat.data[["percent.mt"]] <- PercentageFeatureSet(seurat.data, pattern = "^MT-")
@@ -46,15 +47,15 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
   seurat.data <- RunUMAP(seurat.data, dims = 1:10)
   n <- length(count[2,])
-  seurat.data <- seurat.data[ ,!duplicated(colnames(seurat.data))]
-  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+  #seurat.data <- seurat.data[ ,!duplicated(colnames(seurat.data))]
+  
   #if(n>91){
   #  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
   #}
   #else{
   #  seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 1)
   #}
-
+  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
   head(seurat.data@reductions$tsne@cell.embeddings)
 
   #Add annotation information to Seurat object
