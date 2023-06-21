@@ -15,6 +15,10 @@
 seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
   count <- count[, !duplicated(colnames(count))]
+   celltype <- intersect(colnames(count),ssGSEA_result[,1])
+  labels <- ssGSEA_result[which(ssGSEA_result[,1]%in%celltype),]
+  count <- count[,labels[,1]]
+  
   seurat.data <- CreateSeuratObject(counts = count, project = filename)#, min.cells = 3, min.features = 200)
   seurat.data
   seurat.data[["percent.mt"]] <- PercentageFeatureSet(seurat.data, pattern = "^MT-")
@@ -59,7 +63,7 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   head(seurat.data@reductions$tsne@cell.embeddings)
 
   #Add annotation information to Seurat object
-  seurat.data@meta.data$cell_type_pred <- ssGSEA_result[,2]
+  seurat.data@meta.data$cell_type_pred <-labels[,2]
 
   pdf(paste(filename, "_tSNE", ".pdf", sep=""), width=12, height=10)
   p1 <- DimPlot(seurat.data, reduction = "tsne", group.by = "cell_type_pred",label = TRUE, pt.size=1)
