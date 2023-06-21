@@ -46,7 +46,7 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
 
   seurat.data <- RunUMAP(seurat.data, dims = 1:10)
   n <- length(count[2,])
-  seurat.data <- seurat.data[!duplicated(rownames(seurat.data)), ]
+  seurat.data <- seurat.data[!duplicated(colnames(seurat.data)), ]
   seurat.data <- RunTSNE(seurat.data, dims = 1:10)
   #if(n>91){
   #  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
