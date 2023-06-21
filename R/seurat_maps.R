@@ -53,13 +53,14 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   n <- length(count[2,])
   #seurat.data <- seurat.data[ ,!duplicated(colnames(seurat.data))]
   
-  #if(n>91){
-  #  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
-  #}
-  #else{
-  #  seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 1)
-  #}
-  seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+   min_cell_count <- 100  
+  if(ncol(seurat.data) >= min_cell_count){
+    seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+  }
+  else{
+    seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 5)
+  }
+
   head(seurat.data@reductions$tsne@cell.embeddings)
 
   #Add annotation information to Seurat object
