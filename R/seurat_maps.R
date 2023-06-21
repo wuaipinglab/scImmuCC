@@ -55,10 +55,10 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   
    min_cell_count <- 100  
   if(ncol(seurat.data) >= min_cell_count){
-    seurat.data <- RunTSNE(seurat.data, dims = 1:10)
+    seurat.data <- RunTSNE(seurat.data, dims = 1:10,check_duplicates = FALSE )
   }
   else{
-    seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 5)
+    seurat.data <- RunTSNE(seurat.data, dims = 1:10, perplexity = 5,check_duplicates = FALSE )
   }
 
   head(seurat.data@reductions$tsne@cell.embeddings)
