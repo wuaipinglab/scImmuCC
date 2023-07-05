@@ -58,7 +58,7 @@ scImmuCC_Layered <- function(count,Non_Immune=TRUE){
 
     cell_type2 <- unique(ssGSEA_Tcell[,2])
 
-    if("CD4_T" %in% cell_type){
+    if("CD4_T" %in% cell_type2){
       sub_ssGSEA_CD4 <- ssGSEA_Tcell[which(ssGSEA_Tcell[,2]=="CD4_T"),]
       sub_count_CD4 <- count[,sub_ssGSEA_CD4[,1]]
       sub_count_CD4 <- as.matrix(sub_count_CD4)
@@ -71,7 +71,7 @@ scImmuCC_Layered <- function(count,Non_Immune=TRUE){
     }
 
 
-    if("CD8_T" %in% cell_type){
+    if("CD8_T" %in% cell_type2){
       sub_ssGSEA_CD8 <- ssGSEA_Tcell[which(ssGSEA_Tcell[,2]=="CD8_T"),]
       sub_count_CD8 <- count[,sub_ssGSEA_CD8[,1]]
       sub_count_CD8 <- as.matrix(sub_count_CD8)
