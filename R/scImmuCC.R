@@ -75,7 +75,7 @@ scImmuCC_Layered <- function(count,Non_Immune=TRUE){
       sub_ssGSEA_CD8 <- ssGSEA_Tcell[which(ssGSEA_Tcell[,2]=="CD8_T"),]
       sub_count_CD8 <- count[,sub_ssGSEA_CD8[,1]]
       sub_count_CD8 <- as.matrix(sub_count_CD8)
-      ssGSEA_CD8 <- scImmuCC_main(sub_count_CD8,CD8_genelist,"Layer3_CD4")
+      ssGSEA_CD8 <- scImmuCC_main(sub_count_CD8,CD8_genelist,"Layer3_CD8")
       cells <- length(sub_count_CD8[2,])
       if(cells>50){
         seurat_CD8 <- seurat_Heatmap(sub_count_CD8,CD8_genelist,ssGSEA_CD8,"Layer3_CD8")
