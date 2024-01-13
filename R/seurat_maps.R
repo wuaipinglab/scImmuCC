@@ -35,7 +35,8 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   seurat.data <- ScaleData(seurat.data, features = all.genes)
 
   #Perform linear dimensional reductionPerform linear dimensional reduction
-  counts <- seurat.data[["RNA"]]@counts
+  #counts <- seurat.data[["RNA"]]@counts
+  counts <- seurat.data[["RNA"]]$counts
   cells <- length(counts[2,])
   if(cells>50){
     seurat.data <- RunPCA(seurat.data, features = VariableFeatures(object = seurat.data))
