@@ -16,8 +16,20 @@ scImmuCC_main <- function(count,genematrix,filename){
 
   genelist <- as.list(genematrix)
   genelist <- lapply(genelist,function(x) x[!is.na(x)])
-
-  ssgsea_score = gsva(count, genelist, method = "ssgsea", ssgsea.norm = TRUE, verbose = TRUE)   # signature 'matrix,list'
+                     
+  ssgsea <- ssgseaParam(
+    count,
+    genelist,
+    assay = NA_character_,
+    annotation = NA_character_,
+    minSize = 1,
+    maxSize = Inf,
+    alpha = 0.25,
+    normalize = TRUE
+  )
+  
+  ssgsea_score <- gsva(ssgsea)
+  ##ssgsea_score = gsva(count, genelist, method = "ssgsea", ssgsea.norm = TRUE, verbose = TRUE)   # signature 'matrix,list'
   score <- t(ssgsea_score)
 
   barcodes <- c()
