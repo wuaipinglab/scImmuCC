@@ -47,8 +47,10 @@ seurat_Heatmap <- function(count,genematrix,ssGSEA_result,filename){
   head(seurat.data@reductions$pca@cell.embeddings)
   head(seurat.data@reductions$pca@feature.loadings)
   seurat.data <- ProjectDim(object = seurat.data)
-  seurat.data <- JackStraw(seurat.data, num.replicate = 100)
-  seurat.data <- ScoreJackStraw(seurat.data, dims = 1:20)
+  #seurat.data <- JackStraw(seurat.data, num.replicate = 100)
+  #seurat.data <- ScoreJackStraw(seurat.data, dims = 1:20)
+  seurat.data <- JackStraw(seurat.data, dims = 50)
+  seurat.data <- ScoreJackStraw(seurat.data, dims = 1:50)
 
   seurat.data <- RunUMAP(seurat.data, dims = 1:10)
   n <- length(count[2,])
