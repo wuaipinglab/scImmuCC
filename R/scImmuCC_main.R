@@ -19,14 +19,16 @@ scImmuCC_main <- function(count,genematrix,filename){
                      
   ssgsea <- ssgseaParam(
     count,
-    genelist,
-    assay = NA_character_,
-    annotation = NA_character_,
-    minSize = 1,
-    maxSize = Inf,
-    alpha = 0.25,
-    normalize = TRUE
-  )
+    genelist
+    )
+    #,
+    #assay = NA_character_,
+    #annotation = NA_character_,
+    #minSize = 1,
+    #maxSize = Inf,
+    #alpha = 0.25,
+    #normalize = TRUE
+  #)
   
   ssgsea_score <- gsva(ssgsea)
   ##ssgsea_score = gsva(count, genelist, method = "ssgsea", ssgsea.norm = TRUE, verbose = TRUE)   # signature 'matrix,list'
